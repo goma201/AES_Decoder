@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Tue Sep 12 00:53:59 2017
+# Process ID: 10062
+# Current directory: /home/goma/Documents/Work/AES/RUN
+# Command line: vivado
+# Log file: /home/goma/Documents/Work/AES/RUN/vivado.log
+# Journal file: /home/goma/Documents/Work/AES/RUN/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/goma/Documents/Work/AES/RUN/AES/AES.xpr
+update_compile_order -fileset sources_1

@@ -1,0 +1,5 @@
+# Test Bench module set at first of TARGETFILE_LIST
+
+TARGETFILE_LIST=("test_bench.v" "test.v")
+#TARGETFILE_LIST=("test.v")
+OUTPUT_NAME="test.o"

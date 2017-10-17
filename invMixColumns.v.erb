@@ -1,0 +1,50 @@
+`timescale 1ns/1ps
+
+module invMixColumns(/*AUTOARG*/);
+
+   input clk;
+   input resetn;
+   
+   input [31:0] DATA_IN;
+   output [31:0] DATA_OUT;
+
+   /*<%for i in 0 ... 16%>*/
+   wire [7:0]	 w_addr<%=i%>;
+   wire [31:0]	 w_data<%=i%>;
+   /*<%end%>*/
+   /*<%for i in 0 ... 4%>*/
+   reg [31:0] 	 out_buf<%=i%>;
+   wire [31:0] 	 w_xor_data<%=i%>;
+   /*<%end%>*/
+
+   wire [31:0] 	 w_xor_data;
+   
+   /*<%for i in 0 ... 4%>*/
+   assign w_addr<%=i*4+0%> = DATA_IN[ 7: 0];
+   assign w_addr<%=i*4+1%> = DATA_IN[15: 8];
+   assign w_addr<%=i*4+2%> = DATA_IN[23:16];
+   assign w_addr<%=i*4+3%> = DATA_IN[31:24];
+   /*<%end%>*/
+   
+   /*<%for i in 0 ... 4%>*/
+   assign w_xor_data<%=i%> = w_addr<%=i*4%> ^ w_addr<%=i*4+1%> 
+                           ^ w_addr<%=i*4+2%> ^ w_addr<%=i*4+3%>;
+   /*<%end%>*/
+   assign w_xor_data = w_xor_data0 | (w_xor_data1 << 8) | (w_xor_data2 << 16) | (w_xor_data3 << 24);
+      
+   /*<%for i in 0 ... 4%>*/
+   always @ (posedge clk or negedge resetn)
+     if(!resetn)
+       out_buf<%=i%> <= 32'h0;
+     else
+       out_buf<%=i%> <= w_xor_data;
+    /*<%end%>*/
+   
+/*<%for i in 0 ... 16%>*/
+   ROM rom<%=i%>(.addra(w_addr<%=i%>[7:0]),
+		 .clka (clk),
+		 .douta(w_data<%=i%>[31:0])
+		 );
+   
+   
+endmodule // invMixColumns

@@ -1,0 +1,68 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Mon Sep 11 23:16:22 2017
+# Process ID: 5655
+# Current directory: /home/goma/Documents/Work/AES/RUN
+# Command line: vivado
+# Log file: /home/goma/Documents/Work/AES/RUN/vivado.log
+# Journal file: /home/goma/Documents/Work/AES/RUN/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project AES /home/goma/Documents/Work/AES/RUN/AES -part xc7z010clg225-1
+add_files -norecurse /home/goma/Documents/Work/AES/invSubBytes.v
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -datasheet -name timing_1
+add_files -norecurse /home/goma/Documents/Work/AES/timing_tester.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+refresh_design
+file mkdir /home/goma/Documents/Work/AES/RUN/AES/AES.srcs/constrs_1
+file mkdir /home/goma/Documents/Work/AES/RUN/AES/AES.srcs/constrs_1/new
+close [ open /home/goma/Documents/Work/AES/RUN/AES/AES.srcs/constrs_1/new/constraint.xdc w ]
+add_files -fileset constrs_1 /home/goma/Documents/Work/AES/RUN/AES/AES.srcs/constrs_1/new/constraint.xdc
+refresh_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 50 -input_pins -name timing_1
+refresh_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+refresh_design
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+set_property target_constrs_file /home/goma/Documents/Work/AES/RUN/AES/AES.srcs/constrs_1/new/constraint.xdc [current_fileset -constrset]
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+close_design
+open_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
